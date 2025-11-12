@@ -80,7 +80,7 @@
         </section>
 
         <section id="api-dinamica" class="seccion-principal">
-            <h2>✨ Estrenos (Datos Dinámicos API)</h2>
+            <h2>✨ Proximos Estrenos</h2> <!-- API DINAMICA de Cine - https://www.omdbapi.com/ -->
             <p style="text-align: center;">Esta sección carga las películas más populares del momento utilizando un servicio de datos externos (API).</p>
             <div id="peliculas-api-container" class="api-contenedor">
                 <p id="api-loading" style="text-align: center; color: var(--color-acento);">Cargando películas dinámicas...</p>
@@ -304,6 +304,21 @@
                     <p id="modal-precio"><strong>Precio Entrada:</strong> $5000 ARS</p> 
                     <button id="modal-agregar-carrito" class="boton-compra">Agregar al Carrito</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-carrito">&times;</span>
+            <h3 class="titulo-carrito">🛒 Mi Carrito de Compras</h3>
+            <div id="lista-carrito" class="lista-carrito">
+                <p class="carrito-vacio-mensaje">Tu carrito está vacío.</p>
+            </div>
+            <div id="resumen-carrito">
+                <p id="total-carrito">Total: $0 ARS</p>
+                <button id="finalizar-compra" class="boton-compra">Finalizar Compra</button>
+                <button id="vaciar-carrito" class="boton-limpiar">Vaciar Carrito</button>
             </div>
         </div>
     </div>

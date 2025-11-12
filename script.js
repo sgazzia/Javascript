@@ -180,10 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================
 
     const botonesCompra = document.querySelectorAll('.boton-compra');
+    const carritoIcono = document.querySelector('.carrito-status');
     const carritoContador = document.getElementById('carrito-contador'); 
 
-    const modal = document.getElementById('modal-pelicula');
-    const cerrarModal = document.querySelector('.cerrar-modal');
+    const modalPelicula = document.getElementById('modal-pelicula');
+    const cerrarModalPelicula = document.querySelector('.cerrar-modal');
     const modalImagen = document.getElementById('modal-imagen');
     const modalTitulo = document.getElementById('modal-titulo');
     const modalGenero = document.getElementById('modal-genero');
@@ -192,18 +193,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalPrecio = document.getElementById('modal-precio');
     const modalAgregarCarritoBtn = document.getElementById('modal-agregar-carrito');
 
+    // Elementos del Carrito
+    const modalCarrito = document.getElementById('modal-carrito');
+    const cerrarModalCarrito = document.querySelector('.cerrar-carrito');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalCarritoDisplay = document.getElementById('total-carrito');
+    const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+    const finalizarCompraBtn = document.getElementById('finalizar-compra');
+
     let carrito = JSON.parse(localStorage.getItem('carritoCinepolis')) || [];
 
     function actualizarContadorCarrito() {
         const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
         if (carritoContador) {
             carritoContador.textContent = totalItems;
-        } else {
-            console.log(`Carrito actualizado. Total de ítems: ${totalItems}`);
         }
     }
 
-    actualizarContadorCarrito();
+    function renderizarCarrito() {
+        listaCarrito.innerHTML = '';
+        let total = 0;
+
+        if (carrito.length === 0) {
+            listaCarrito.innerHTML = '<p class="carrito-vacio-mensaje">Tu carrito está vacío.</p>';
+            totalCarritoDisplay.textContent = 'Total: $0 ARS';
+            return;
+        }
+
+        carrito.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item-carrito');
+            itemDiv.innerHTML = `
+                <span class="item-nombre">${item.nombre}</span>
+                <span class="item-cantidad">x${item.cantidad}</span>
+                <span class="item-precio">$${subtotal.toLocaleString('es-AR')}</span>
+            `;
+            listaCarrito.appendChild(itemDiv);
+        });
+
+        totalCarritoDisplay.textContent = `Total: $${total.toLocaleString('es-AR')} ARS`;
+    }
 
     function agregarAlCarrito(producto) {
         const index = carrito.findIndex(item => item.id === producto.id);
@@ -217,16 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
         
         actualizarContadorCarrito();
-        alert(`"${producto.nombre}" agregado al carrito. ¡Gracias por tu compra!`);
-        modal.style.display = 'none';
+        modalPelicula.style.display = 'none';
+        
+        alert(`"${producto.nombre}" agregado al carrito. ¡Total de ítems: ${carritoContador.textContent}!`);
     }
+
+    actualizarContadorCarrito();
 
     botonesCompra.forEach(boton => {
         boton.addEventListener('click', function(e) {
             e.preventDefault(); 
             
             const card = this.closest('.pelicula-card');
-            
             if (!card) return;
 
             const nombreProducto = card.querySelector('h3').textContent.trim();
@@ -256,33 +290,71 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 modalPrecio.innerHTML = `<strong>Precio:</strong> $${precio.toLocaleString('es-AR')} ARS`;
                 modalAgregarCarritoBtn.textContent = "Agregar al Carrito";
-                modalAgregarCarritoBtn.style.display = 'block';
                 modalAgregarCarritoBtn.onclick = () => {
-                    agregarAlCarrito({ nombre: nombreProducto, precio: precio, id: productoId });
+                    agregarAlCarrito({ nombre: nombreProducto, precio: precio, id: productoId, tipo: 'confiteria' });
                 };
             } else {
                 precio = 5000;
+                productoId = 'entrada-' + productoId;
                 modalPrecio.innerHTML = `<strong>Precio Entrada:</strong> $${precio.toLocaleString('es-AR')} ARS`;
                 modalAgregarCarritoBtn.textContent = "Comprar Entrada";
-                modalAgregarCarritoBtn.style.display = 'block';
                 modalAgregarCarritoBtn.onclick = () => {
-                    alert(`¡Entrada para "${nombreProducto}" comprada por $${precio.toLocaleString('es-AR')} ARS! (Simulación de compra de entrada)`);
-                    modal.style.display = 'none';
+                    agregarAlCarrito({ nombre: `Entrada: ${nombreProducto}`, precio: precio, id: productoId, tipo: 'entrada' });
                 };
             }
             
-            modal.style.display = 'block';
+            modalAgregarCarritoBtn.style.display = 'block';
+            modalPelicula.style.display = 'block';
         });
     });
 
-    cerrarModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+    carritoIcono.addEventListener('click', () => {
+        renderizarCarrito();
+        modalCarrito.style.display = 'block';
+    });
+
+    cerrarModalPelicula.addEventListener('click', () => {
+        modalPelicula.style.display = 'none';
+    });
+
+    cerrarModalCarrito.addEventListener('click', () => {
+        modalCarrito.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (event) => {
+        if (event.target == modalPelicula) {
+            modalPelicula.style.display = 'none';
+        }
     });
 
     window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            modal.style.display = 'none';
+        if (event.target == modalCarrito) {
+            modalCarrito.style.display = 'none';
         }
+    });
+
+    vaciarCarritoBtn.addEventListener('click', () => {
+        if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+            carrito = [];
+            localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            renderizarCarrito();
+            alert('El carrito ha sido vaciado.');
+        }
+    });
+    
+    finalizarCompraBtn.addEventListener('click', () => {
+        if (carrito.length === 0) {
+            alert('El carrito está vacío. Agrega ítems antes de finalizar la compra.');
+            return;
+        }
+        const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+        alert(`¡Compra finalizada! Total pagado: $${total.toLocaleString('es-AR')} ARS. Gracias por preferir CinePolis.`);
+        
+        carrito = [];
+        localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+        modalCarrito.style.display = 'none';
     });
 
 });

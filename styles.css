@@ -325,7 +325,7 @@ main {
     padding: 10px 20px;
     border-radius: 50px;
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .boton-inicio a:hover {
@@ -528,5 +528,106 @@ footer {
     #modal-agregar-carrito {
         align-self: stretch;
         text-align: center;
+    }
+}
+/* ========================================================== */
+/* ESTILOS DE LA VENTANA MODAL (CARRITO) */
+/* ========================================================== */
+
+.titulo-carrito {
+    color: var(--color-subtitulo-naranja);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.lista-carrito {
+    max-height: 400px; /* Altura máxima para hacer scroll si hay muchos ítems */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 15px;
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-borde-card);
+    padding: 10px 0;
+    font-size: 1.1em;
+}
+
+.item-carrito:last-child {
+    border-bottom: none;
+}
+
+.item-nombre {
+    flex-grow: 1;
+    font-weight: bold;
+    color: var(--color-texto-claro);
+}
+
+.item-cantidad, .item-precio {
+    width: 80px;
+    text-align: right;
+    color: var(--color-acento-naranja);
+}
+
+.carrito-vacio-mensaje {
+    text-align: center;
+    padding: 40px;
+    color: #aaa;
+    font-style: italic;
+}
+
+#resumen-carrito {
+    border-top: 2px solid var(--color-acento-naranja);
+    padding-top: 20px;
+    text-align: right;
+}
+
+#total-carrito {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: var(--color-subtitulo-naranja);
+    margin-bottom: 15px;
+}
+
+#finalizar-compra {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+#vaciar-carrito {
+    background-color: #666;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#vaciar-carrito:hover {
+    background-color: #888;
+}
+
+@media (max-width: 768px) {
+    .item-carrito {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .item-cantidad, .item-precio {
+        width: 100%;
+        text-align: left;
+        margin-top: 5px;
+    }
+    #resumen-carrito {
+        text-align: center;
+    }
+    #finalizar-compra, #vaciar-carrito {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
     }
 }
