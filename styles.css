@@ -317,14 +317,14 @@ main {
 /* Volver al inicio */
 .seccion-inicio-rapido {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .boton-inicio a {
     background-color: #333;
     padding: 10px 20px;
     border-radius: 50px;
-    font-size: 1em;
+    font-size: 0.4em;
     font-weight: 500;
 }
 
