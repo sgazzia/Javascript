@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!card) return;
 
             const nombreProducto = card.querySelector('h3').textContent.trim();
-            const imagenSrc = card.querySelector('img').src;
+            const imagenSrc = card.querySelector('img').getAttribute('src'); 
             const generoTexto = card.querySelector('p:nth-of-type(1)') ? card.querySelector('p:nth-of-type(1)').innerHTML.replace('<strong>Género: </strong>', '').replace('<br>', ' ').replace('<strong>Horarios:</strong>', '') : 'Género Desconocido';
             const descripcionTexto = card.querySelector('p:nth-of-type(2)') ? card.querySelector('p:nth-of-type(2)').textContent.trim() : 'Sin descripción.';
             
