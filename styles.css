@@ -1,0 +1,465 @@
+
+:root {
+    --color-acento: #ff4500; 
+    --color-subtitulo-naranja: #ff6347; 
+    --color-texto-claro: #f0f0f0; 
+    --color-fondo-secundario: #1c1c1c; 
+    --color-divisor-verde: #00ff80; 
+    --color-texto-gris: #aaa; 
+    --color-fondo-principal: #0a0a0a; 
+}
+
+/* Estilos Generales y Reseteo */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: var(--color-divisor-verde);
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--color-divisor-verde);
+    padding-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-texto-claro);
+    transition: color 0.3s;
+}
+
+
+header {
+    background-color: var(--color-fondo-secundario);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 65px;
+    margin-right: 10px;
+}
+
+.logo-texto {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: var(--color-acento);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    font-weight: 700;
+}
+
+nav ul li a:hover {
+    color: var(--color-acento);
+}
+
+/* Main y Secciones */
+main {
+    padding: 0 5%;
+}
+
+.seccion-principal {
+    padding: 80px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px dotted var(--color-texto-gris);
+}
+
+/* Cards (Películas y Confitería) */
+.productos-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.pelicula-card {
+    background-color: var(--color-fondo-secundario);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 300px;
+}
+
+.pelicula-card img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.pelicula-card h3 {
+    color: var(--color-acento);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.boton-compra {
+    display: block;
+    background-color: var(--color-acento);
+    color: var(--color-texto-claro);
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* API Section Styles */
+.api-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.api-card {
+    background-color: var(--color-fondo-secundario);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.api-card img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.api-card h3 {
+    color: var(--color-acento);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.api-card p {
+    color: var(--color-texto-claro);
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Tablas de Precios */
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-precios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--color-fondo-secundario);
+}
+
+.tabla-precios th, .tabla-precios td {
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: left;
+}
+
+.tabla-precios th {
+    background-color: var(--color-acento);
+    color: var(--color-texto-claro);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.tabla-precios tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+/* Formularios y Validación Visual */
+.formulario-seccion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.formulario label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="url"],
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #333;
+    color: var(--color-texto-claro);
+    transition: border-color 0.3s;
+}
+
+.formulario textarea {
+    resize: vertical;
+}
+
+/* Estilos de Validación */
+.campo-error {
+    border: 2px solid var(--color-acento) !important;
+}
+
+.mensaje-error {
+    color: var(--color-acento); /* Rojo */
+    font-size: 0.85em;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    display: none; /* Oculto por defecto */
+    font-weight: bold;
+    text-align: left;
+}
+
+.botones-finales {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.boton-enviar, .boton-limpiar {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.boton-enviar {
+    background-color: var(--color-divisor-verde);
+    color: #0a0a0a;
+}
+
+.boton-limpiar {
+    background-color: #888;
+    color: var(--color-texto-claro);
+}
+
+.boton-enviar:hover {
+    background-color: #00e673;
+}
+.boton-limpiar:hover {
+    background-color: #666;
+}
+
+.campos-linea {
+    display: flex;
+    gap: 20px;
+}
+.campo-doble {
+    flex: 1;
+}
+
+/* Reseñas Grid */
+.reseñas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.reseña-card {
+    background-color: var(--color-fondo-secundario);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-acento);
+}
+
+.reseña-card h3 {
+    color: var(--color-subtitulo-naranja);
+}
+
+.autor {
+    font-style: italic;
+    margin-top: 15px;
+    color: var(--color-texto-gris);
+}
+
+/* Volver al inicio */
+.seccion-inicio-rapido {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.boton-inicio a {
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.boton-inicio a:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-fondo-secundario);
+    padding: 30px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    border-top: 3px solid var(--color-acento);
+}
+
+.footer-seccion {
+    margin: 10px 0;
+}
+
+.footer-redes p, .footer-info a {
+    color: var(--color-texto-gris);
+    margin-right: 15px;
+}
+
+.footer-redes i {
+    font-size: 1.5em;
+    margin-left: 10px;
+}
+
+.footer-redes i:hover {
+    color: var(--color-acento);
+}
+
+.copyright {
+    font-size: 0.8em;
+    color: #555;
+}
+
+/* Media Queries (Responsive) */
+@media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .productos-flex-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 2em;
+    }
+    
+    .seccion-principal {
+        padding: 50px 0;
+    }
+
+    .footer-seccion {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .campos-linea {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .botones-finales {
+        flex-direction: column;
+    }
+    
+    .boton-enviar, .boton-limpiar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    /* ========================================================== */
+/* ESTILOS DEL CONTADOR DE CARRITO */
+/* ========================================================== */
+.carrito-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.carrito-status i {
+    font-size: 1.6em; 
+    color: var(--color-acento-naranja);
+    transition: transform 0.2s ease;
+}
+.carrito-status i:hover {
+    transform: scale(1.1);
+}
+#carrito-contador {
+    background-color: var(--color-acento-naranja);
+    color: var(--color-fondo-negro);
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 50%;
+    font-size: 0.75em;
+    line-height: 1;
+    min-width: 22px;
+    text-align: center;
+    position: relative;
+    top: -8px;
+    right: 5px;
+}
+
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .carrito-status {
+        margin-top: 15px; 
+        margin-left: 0;
+        order: 3;
+    }
+}
+}

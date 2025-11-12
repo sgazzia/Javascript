@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinePolis - La Mejor Experiencia Cinematográfica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body id="inicio">
+
+    <header>
+        <div class="logo">
+        <h1>
+            <a href="#inicio" class="logo-link">
+               <img src="imagenes/logo.png" alt="Logo de Cinepolis">
+               <span class="logo-texto">CinePolis</span>
+            </a>
+        </h1>
+        </div>
+        
+        <nav>
+        <ul>
+        <li><a href="#quienes-somos">Nosotros</a></li>
+        <li><a href="#cartelera">Cartelera</a></li>
+        <li><a href="#api-dinamica">API Estrenos</a></li>
+        <li><a href="#confiteria">Confitería</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#trabaja-nosotros">Trabaja con Nosotros</a></li>
+        </ul>
+        </nav> 
+        
+        <div class="carrito-status">
+            <i class="fas fa-shopping-cart" style="color: var(--color-acento-naranja);"></i>
+            <span id="carrito-contador">0</span>
+        </div>
+        </header>
+
+    <main>
+        
+        <section id="quienes-somos" class="seccion-principal">
+            <h2>🍿 Quiénes Somos</h2>
+            <p>Desde 2010, **CinePolis** se ha comprometido a ofrecer la mejor calidad de sonido e imagen en la ciudad. Nuestra misión es simple: crear experiencias memorables para cada uno de nuestros visitantes.</p>
+            <p>Contamos con 12 salas premium, asientos reclinables y el mejor servicio de confitería.</p>
+            <p>Actualmente, complementamos la magia de la pantalla grande con un portal donde podrás **ver trailers, acceder a enlaces de descarga o streaming** de los últimos estrenos.</p>
+        </section>
+        
+        <section id="cartelera" class="seccion-principal">
+            <h2>🎬 Cartelera</h2>
+            <div class="productos-flex-container"> 
+                <article class="pelicula-card">
+                    <h3>Avatar 3</h3>
+                    <img src="imagenes/Peliculas/Avatar.jpg" alt="Poster de Avatar 3" width="200" height="300">
+                    <p><strong>Género: </strong> Ciencia Ficción  <br> <strong>Horarios:</strong> 19:00, 22:30</p>
+                    <p>Jake Sully, ahora Na'vi, debe proteger Pandora de la amenaza humana mientras explora nuevas culturas.</p>
+                    <a href="#" class="boton-compra">Ver Detalles y Comprar</a>
+                </article>
+
+                <article class="pelicula-card">
+                    <h3>El Conjuro 4</h3>
+                    <img src="imagenes/Peliculas/Conjuro4.jpg" alt="Poster de Avatar 3" width="200" height="300">
+                    <p><strong>Género:</strong> Terror  <strong> <br>Horarios:</strong> 17:00, 21:00</p>
+                    <p>Ed y Lorraine Warren se enfrentan a un último caso escalofriante de posesión demoníaca para cerrar su legado.</p>
+                    <a href="#" class="boton-compra">Ver Detalles y Comprar</a>
+                </article>
+
+                <article class="pelicula-card">
+                    <h3>Demon Slayer</h3>
+                    <img src="imagenes/Peliculas/demon.jpg" alt="Poster de Avatar 3" width="200" height="300">
+                    <p><strong>Género:</strong> Anime <strong> <br>Horarios:</strong> 15:00, 18:00</p>
+                    <p>Un joven cazador busca la cura para su hermana demonizada mientras lucha contra poderosos demonios ancestrales.</p>
+                    <a href="#" class="boton-compra">Ver Detalles y Comprar</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="api-dinamica" class="seccion-principal">
+            <h2>✨ Estrenos (Datos Dinámicos API)</h2>
+            <p style="text-align: center;">Esta sección carga las películas más populares del momento utilizando un servicio de datos externos (API).</p>
+            <div id="peliculas-api-container" class="api-contenedor">
+                <p id="api-loading" style="text-align: center; color: var(--color-acento);">Cargando películas dinámicas...</p>
+            </div>
+        </section>
+        
+        <section id="confiteria" class="seccion-principal">
+            <h2>🍿 Confitería & Promociones</h2>
+            <p>¡No olvides complementar tu experiencia con nuestros combos exclusivos!</p>
+
+            <div class="productos-flex-container"> 
+                <article class="pelicula-card">
+                    <h3>Combo Popcorn XL</h3>
+                    <img src="imagenes/Comida/popcorn.jpg" alt="Combo Popcorn" width="200" height="300">
+                    <p><strong>Incluye:</strong> Popcorn extra grande y dos bebidas de 750ml.</p>
+                    <p>Ideal para compartir la mejor película.</p>
+                    <a href="#" class="boton-compra">Agregar al Carrito</a>
+                </article>
+
+                <article class="pelicula-card">
+                    <h3>Nachos Supreme</h3>
+                    <img src="imagenes/Comida/nachosqueso.jpg" alt="Nachos Supreme" width="200" height="300">
+                    <p><strong>Incluye:</strong> Porción grande de nachos, queso cheddar y jalapeños.</p>
+                    <p>El Snack indicado para una dosis de adrenalina.</p>
+                    <a href="#" class="boton-compra">Agregar al Carrito</a>
+                </article>
+
+                <article class="pelicula-card">
+                    <h3>Coca-Cola</h3>
+                    <img src="imagenes/Comida/Coca.jpg" alt="Gaseosa Coca-Cola" width="200" height="300">
+                    <p><strong>Incluye:</strong> Una gaseosa para refrescar la salida para que sea inolvidable.</p>
+                    <p> El complemento burbujeante perfecto para tu película.</p>
+                    <a href="#" class="boton-compra">Agregar al Carrito</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="precios" class="seccion-principal">
+            <h2>💰 Precios y Tarifas</h2>
+            
+            <h3>🎟 Entradas por Función (Precios base)</h3>
+            <div class="tabla-contenedor">
+                <table class="tabla-precios">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Entrada</th>
+                            <th>Precio (ARS)</th>
+                            <th>Aplica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Adultos (General)</td><td>$5000</td><td>Todas las funciones</td></tr>
+                        <tr><td>Niños (Menores de 12)</td><td>$3500</td><td>Todas las funciones</td></tr>
+                        <tr><td>Jubilados / Universitarios</td><td>$3000</td><td>Presentando credencial válida</td></tr>
+                        <tr><td>Día del Espectador (Miércoles)</td><td>$2500</td><td>Solo funciones 2D</td></tr>
+                        <tr><td>Sala Premium / 3D (Recargo)</td><td>+$500</td><td>Sobre el precio base</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+
+            <h3>🥤 Precios Individuales Confitería</h3>
+            <div class="tabla-contenedor">
+                <table class="tabla-precios">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Tamaño</th>
+                            <th>Precio (ARS)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Popcorn</td><td>Mediano</td><td>$2000</td></tr>
+                        <tr><td>Popcorn</td><td>Gigante (Balde)</td><td>$4500</td></tr>
+                        <tr><td>Gaseosa</td><td>750 ml</td><td>$1500</td></tr>
+                        <tr><td>Nachos</td><td>Porción Regular</td><td>$2800</td></tr>
+                        <tr><td>Chocolate/Golosina</td><td>Unidad</td><td>$1000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 20px;">*Recuerda que nuestros Combos (ver sección Confitería) ofrecen el mejor precio.</p>
+        </section>
+
+        <section id="ubicacion" class="seccion-principal">
+            <h2>📍 Ubicación (Encuéntranos)</h2>
+            <p>Visita nuestro cine principal en el corazón de la ciudad. ¡Te esperamos!</p>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.016887889445!2d-58.3815923!3d-34.603722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac88c78ccb3%3A0x633d45585090f425!2sObelisco!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+
+        <section id="contacto" class="seccion-principal formulario-seccion">
+            <h2>⚛️ Contáctanos y Reserva tus Entradas</h2>
+            <p style="text-align: center;">Envíanos tus consultas o peticiones de reserva. Te responderemos a la brevedad.</p>
+
+            <form id="contacto-form" class="formulario" novalidate>
+                
+                <div class="campos-linea">
+                    <div class="campo-doble">
+                        <label for="nombre-contacto">Nombre Completo:</label>
+                        <input type="text" id="nombre-contacto" name="nombre" required>
+                        <div id="error-nombre-contacto" class="mensaje-error">El nombre es obligatorio y debe tener al menos 3 caracteres.</div>
+                    </div>
+                    
+                    <div class="campo-doble">
+                        <label for="email-contacto">Email:</label>
+                        <input type="email" id="email-contacto" name="email" required>
+                        <div id="error-email-contacto" class="mensaje-error">El email es obligatorio y debe tener un formato válido (ej: usuario@dominio.com).</div>
+                    </div>
+                </div>
+
+                <label for="mensaje-contacto">Mensaje o Consulta:</label>
+                <textarea id="mensaje-contacto" name="mensaje" rows="6" required></textarea>
+                <div id="error-mensaje-contacto" class="mensaje-error">El mensaje es obligatorio y debe tener al menos 10 caracteres.</div>
+
+                <div class="botones-finales">
+                    <button type="reset" class="boton-limpiar">Limpiar</button>
+                    <button type="submit" class="boton-enviar">Enviar Consulta</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="trabaja-nosotros" class="seccion-principal formulario-seccion">
+            <h2>📧 ¡Unite al equipo! 📧</h2>
+            <p style="text-align: center; font-size: 1.15em; color: var(--color-subtitulo-naranja); margin-top: 3px; margin-bottom: 30px;">Tu Nueva Experiencia comienza en Cinepolis</p> 
+            <p style="text-align: center; color: var(--color-texto-claro); margin-bottom: 20px;">Completa el siguiente formulario con tus datos.</p>
+            
+            <form id="trabajo-form" class="formulario" novalidate>
+                
+                <label for="nombre-trabajo">Nombre Completo:</label>
+                <input type="text" id="nombre-trabajo" name="nombre" required>
+                <div id="error-nombre-trabajo" class="mensaje-error">El nombre es obligatorio.</div>
+                
+                <label for="email-trabajo">Email:</label>
+                <input type="email" id="email-trabajo" name="email" required>
+                <div id="error-email-trabajo" class="mensaje-error">El email debe ser válido.</div>
+
+                <label for="puesto-trabajo">Puesto deseado:</label>
+                <input type="text" id="puesto-trabajo" name="puesto" required>
+                <div id="error-puesto-trabajo" class="mensaje-error">Debe especificar un puesto.</div>
+
+                <label for="linkedin-trabajo">URL de Linkedin (o CV):</label>
+                <input type="url" id="linkedin-trabajo" name="linkedin" required>
+                <div id="error-linkedin-trabajo" class="mensaje-error">La URL de Linkedin es obligatoria y debe ser válida.</div>
+
+                <label for="experiencia-trabajo">Indicar experiencia/comentario:</label>
+                <textarea id="experiencia-trabajo" name="mensaje" rows="5" required></textarea>
+                <div id="error-experiencia-trabajo" class="mensaje-error">Por favor, detalle su experiencia (mínimo 10 caracteres).</div>
+                
+                <div class="botones-finales"> 
+                    <button type="reset" class="boton-limpiar">Limpiar</button>
+                    <button type="submit" class="boton-enviar">Enviar Postulación</button> 
+                </div>
+            </form>
+        </section>
+
+        <section id="reseñas" class="seccion-principal">
+            <h2>⭐️ Lo Que Dicen Nuestros Clientes</h2>
+            
+            <div class="reseñas-grid">
+                
+                <article class="reseña-card">
+                    <h3>"La mejor experiencia premium"</h3>
+                    <p>El sonido Dolby Atmos es increíble. Las salas premium son cómodas y el servicio en la confitería fue rápido y amable. ¡Volveremos por los combos!</p>
+                    <p class="autor">- Laura G. (4 estrellas)</p>
+                </article>
+
+                <article class="reseña-card">
+                    <h3>"Película 5/5, Calidad 5/5"</h3>
+                    <p>Fui a ver 'El Código de la Furia' y la proyección 4K se veía espectacular. Los asientos reclinables hicieron la función mucho más agradable que en otros cines.</p>
+                    <p class="autor">- Pedro R. (5 estrellas)</p>
+                </article>
+
+                <article class="reseña-card">
+                    <h3>"Excelente atención en taquilla"</h3>
+                    <p>Tuvimos un problema con la reserva online y el personal de taquilla lo solucionó en menos de dos minutos. ¡Gran servicio al cliente!</p>
+                    <p class="autor">- María C. (5 estrellas)</p>
+                </article>
+
+                <article class="reseña-card">
+                    <h3>"Muy limpio y espacioso"</h3>
+                    <p>Las instalaciones se notan muy bien cuidadas. La sala estaba impecable y la distancia entre filas es perfecta. Un 10.</p>
+                    <p class="autor">- David M. (5 estrellas)</p>
+                </article>
+                
+                <article class="reseña-card">
+                    <h3>"Muy buena Cartelera"</h3>
+                    <p> Siempre con muy buenas peliculas del momento</p>
+                    <p class="autor">- Miguel Hardt (4 estrellas)</p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <section class="seccion-inicio-rapido">
+            <h2 class="boton-inicio">
+                <a href="#inicio">↑ Inicio</a>
+            </h2>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="footer-seccion footer-info"> 
+            <a href="#">Avisos Legales</a> |
+            <a href="#trabaja-nosotros">Trabaja con Nosotros</a>
+            <p class="contacto-admin">Admin: admin@Cinepolis.com</p>
+        </div>
+
+        <div class="footer-seccion footer-redes"> 
+            <p>Síguenos:
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </p>
+        </div>
+
+        <div class="footer-seccion footer-copyright"> 
+            <p class="copyright">© 2024 CinePolis. Todos los derechos NO reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
