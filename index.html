@@ -39,7 +39,7 @@
             <i class="fas fa-shopping-cart" style="color: var(--color-acento-naranja);"></i>
             <span id="carrito-contador">0</span>
         </div>
-        </header>
+    </header>
 
     <main>
         
@@ -290,6 +290,23 @@
         </section>
         
     </main>
+    
+    <div id="modal-pelicula" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <div class="modal-info">
+                <img id="modal-imagen" src="" alt="Poster de la película">
+                <div class="modal-detalles">
+                    <h3 id="modal-titulo"></h3>
+                    <p id="modal-genero"></p>
+                    <p id="modal-horarios"></p>
+                    <p id="modal-descripcion"></p>
+                    <p id="modal-precio"><strong>Precio Entrada:</strong> $5000 ARS</p> 
+                    <button id="modal-agregar-carrito" class="boton-compra">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-seccion footer-info"> 

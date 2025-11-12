@@ -176,11 +176,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFormValidation('trabajo-form', trabajoFields);
 
     // ==========================================================
-    // 3. Lógica para botones de Compra/Carrito (Interactividad con localStorage)
+    // 3. Lógica para botones de Compra/Carrito (Interactividad con Modal)
     // ==========================================================
 
     const botonesCompra = document.querySelectorAll('.boton-compra');
     const carritoContador = document.getElementById('carrito-contador'); 
+
+    const modal = document.getElementById('modal-pelicula');
+    const cerrarModal = document.querySelector('.cerrar-modal');
+    const modalImagen = document.getElementById('modal-imagen');
+    const modalTitulo = document.getElementById('modal-titulo');
+    const modalGenero = document.getElementById('modal-genero');
+    const modalHorarios = document.getElementById('modal-horarios');
+    const modalDescripcion = document.getElementById('modal-descripcion');
+    const modalPrecio = document.getElementById('modal-precio');
+    const modalAgregarCarritoBtn = document.getElementById('modal-agregar-carrito');
 
     let carrito = JSON.parse(localStorage.getItem('carritoCinepolis')) || [];
 
@@ -196,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarContadorCarrito();
 
     function agregarAlCarrito(producto) {
-        const index = carrito.findIndex(item => item.nombre === producto.nombre);
+        const index = carrito.findIndex(item => item.id === producto.id);
 
         if (index > -1) {
             carrito[index].cantidad += 1;
@@ -207,29 +217,72 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
         
         actualizarContadorCarrito();
-        alert(`"${producto.nombre}" agregado al carrito. Total: ${carrito.length} artículos únicos.`);
+        alert(`"${producto.nombre}" agregado al carrito. ¡Gracias por tu compra!`);
+        modal.style.display = 'none';
     }
 
     botonesCompra.forEach(boton => {
         boton.addEventListener('click', function(e) {
             e.preventDefault(); 
             
-            const card = this.closest('.pelicula-card') || this.closest('.producto-card');
+            const card = this.closest('.pelicula-card');
             
             if (!card) return;
 
-            const nombreProducto = card.querySelector('h3').textContent.trim() || 'Producto Desconocido';
-            const producto = {
-                nombre: nombreProducto,
-                precio: 500, 
-                id: nombreProducto.toLowerCase().replace(/\s/g, '-') 
-            };
+            const nombreProducto = card.querySelector('h3').textContent.trim();
+            const imagenSrc = card.querySelector('img').src;
+            const generoTexto = card.querySelector('p:nth-of-type(1)') ? card.querySelector('p:nth-of-type(1)').innerHTML.replace('<strong>Género: </strong>', '').replace('<br>', ' ').replace('<strong>Horarios:</strong>', '') : 'Género Desconocido';
+            const descripcionTexto = card.querySelector('p:nth-of-type(2)') ? card.querySelector('p:nth-of-type(2)').textContent.trim() : 'Sin descripción.';
             
-            if (this.textContent.includes('Agregar al Carrito')) {
-                agregarAlCarrito(producto);
+            const horariosMatch = card.querySelector('p:nth-of-type(1)').textContent.match(/Horarios:\s*(.*)/);
+            const horariosTexto = horariosMatch ? horariosMatch[1].trim() : 'Horarios no disponibles';
+
+            const esConfiteria = this.textContent.includes('Agregar al Carrito');
+
+            modalImagen.src = imagenSrc;
+            modalTitulo.textContent = nombreProducto;
+            modalGenero.innerHTML = `<strong>Género:</strong> ${generoTexto.split('Horarios:')[0].trim()}`;
+            modalHorarios.innerHTML = `<strong>Horarios:</strong> ${horariosTexto}`;
+            modalDescripcion.textContent = descripcionTexto;
+            
+            let precio = 0;
+            let productoId = nombreProducto.toLowerCase().replace(/\s/g, '-');
+
+            if (esConfiteria) {
+                if (nombreProducto.includes('Popcorn XL')) precio = 4500;
+                else if (nombreProducto.includes('Nachos Supreme')) precio = 2800;
+                else if (nombreProducto.includes('Coca-Cola')) precio = 1500;
+                else precio = 2500;
+                
+                modalPrecio.innerHTML = `<strong>Precio:</strong> $${precio.toLocaleString('es-AR')} ARS`;
+                modalAgregarCarritoBtn.textContent = "Agregar al Carrito";
+                modalAgregarCarritoBtn.style.display = 'block';
+                modalAgregarCarritoBtn.onclick = () => {
+                    agregarAlCarrito({ nombre: nombreProducto, precio: precio, id: productoId });
+                };
             } else {
-                 alert(`¡Acción Simulada!\n"${nombreProducto}" fue seleccionado para Ver Detalles y Comprar.\n(La lógica de checkout no está implementada.)`);
+                precio = 5000;
+                modalPrecio.innerHTML = `<strong>Precio Entrada:</strong> $${precio.toLocaleString('es-AR')} ARS`;
+                modalAgregarCarritoBtn.textContent = "Comprar Entrada";
+                modalAgregarCarritoBtn.style.display = 'block';
+                modalAgregarCarritoBtn.onclick = () => {
+                    alert(`¡Entrada para "${nombreProducto}" comprada por $${precio.toLocaleString('es-AR')} ARS! (Simulación de compra de entrada)`);
+                    modal.style.display = 'none';
+                };
             }
+            
+            modal.style.display = 'block';
         });
     });
+
+    cerrarModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+
 });
