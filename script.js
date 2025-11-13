@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==========================================================
-    // 1. Lógica para la Carga Dinámica de la API (OMDb API)
-    // ==========================================================
     
+    const OMDB_API_KEY = "aa148fdd"; 
+    const TASTEDIVE_API_KEY = "1062321-StudentH-107BA24D"; 
+
     const API_CONTAINER = document.getElementById('peliculas-api-container');
     const API_LOADING = document.getElementById('api-loading');
 
-    const OMDB_API_KEY = "aa148fdd"; 
-    
     const movieTitles = [
         "Avatar: The Way of Water", 
         "Dune: Part Two", 
@@ -72,12 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+    
+    async function fetchTasteDive(query) {
+        const url = `https://tastedive.com/api/similar?q=${encodeURIComponent(query)}&k=${TASTEDIVE_API_KEY}&info=1`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log("Recomendaciones de TasteDive:", data);
+        } catch (error) {
+            console.error("Fallo al obtener recomendaciones de TasteDive:", error);
+        }
+    }
 
     fetchMoviesFromAPI();
-
-    // ==========================================================
-    // 2. Lógica de Validación Visual de Formularios
-    // ==========================================================
 
     const isRequired = (value) => value.trim().length > 0;
     const minLength = (value, min) => value.trim().length >= min;
@@ -175,10 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFormValidation('contacto-form', contactFields);
     setupFormValidation('trabajo-form', trabajoFields);
 
-    // ==========================================================
-    // 3. Lógica para botones de Compra/Carrito (Interactividad con Modal)
-    // ==========================================================
-
     const botonesCompra = document.querySelectorAll('.boton-compra');
     const carritoIcono = document.querySelector('.carrito-status');
     const carritoContador = document.getElementById('carrito-contador'); 
@@ -193,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalPrecio = document.getElementById('modal-precio');
     const modalAgregarCarritoBtn = document.getElementById('modal-agregar-carrito');
 
-    // Elementos del Carrito
     const modalCarrito = document.getElementById('modal-carrito');
     const cerrarModalCarrito = document.querySelector('.cerrar-carrito');
     const listaCarrito = document.getElementById('lista-carrito');
@@ -336,25 +336,23 @@ document.addEventListener('DOMContentLoaded', () => {
     vaciarCarritoBtn.addEventListener('click', () => {
         if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
             carrito = [];
-            localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
+            localStorage.removeItem('carritoCinepolis');
             actualizarContadorCarrito();
             renderizarCarrito();
-            alert('El carrito ha sido vaciado.');
         }
     });
-    
+
     finalizarCompraBtn.addEventListener('click', () => {
-        if (carrito.length === 0) {
-            alert('El carrito está vacío. Agrega ítems antes de finalizar la compra.');
-            return;
+        if (carrito.length > 0) {
+            alert(`¡Compra finalizada! Total a pagar: ${totalCarritoDisplay.textContent}. En breve recibirá sus entradas.`);
+            carrito = [];
+            localStorage.removeItem('carritoCinepolis');
+            actualizarContadorCarrito();
+            renderizarCarrito();
+            modalCarrito.style.display = 'none';
+        } else {
+            alert('El carrito está vacío. Agrega productos para finalizar la compra.');
         }
-        const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-        alert(`¡Compra finalizada! Total pagado: $${total.toLocaleString('es-AR')} ARS. Gracias por preferir CinePolis.`);
-        
-        carrito = [];
-        localStorage.setItem('carritoCinepolis', JSON.stringify(carrito));
-        actualizarContadorCarrito();
-        modalCarrito.style.display = 'none';
     });
 
 });
