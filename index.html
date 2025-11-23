@@ -184,12 +184,15 @@
             <h2>⚛️ Contáctanos y Reserva tus Entradas</h2>
             <p style="text-align: center;">Envíanos tus consultas o peticiones de reserva. Te responderemos a la brevedad.</p>
 
-            <form id="contacto-form" class="formulario" novalidate>
+            <form id="contacto-form" class="formulario" 
+                action="https://formspree.io/f/mgvnkblj" 
+                method="POST" 
+                target="_blank">
                 
                 <div class="campos-linea">
                     <div class="campo-doble">
                         <label for="nombre-contacto">Nombre Completo:</label>
-                        <input type="text" id="nombre-contacto" name="nombre" required>
+                        <input type="text" id="nombre-contacto" name="nombre-completo" required>
                         <div id="error-nombre-contacto" class="mensaje-error">El nombre es obligatorio y debe tener al menos 3 caracteres.</div>
                     </div>
                     
@@ -201,7 +204,7 @@
                 </div>
 
                 <label for="mensaje-contacto">Mensaje o Consulta:</label>
-                <textarea id="mensaje-contacto" name="mensaje" rows="6" required></textarea>
+                <textarea id="mensaje-contacto" name="mensaje-consulta" rows="6" required></textarea>
                 <div id="error-mensaje-contacto" class="mensaje-error">El mensaje es obligatorio y debe tener al menos 10 caracteres.</div>
 
                 <div class="botones-finales">
@@ -216,10 +219,13 @@
             <p style="text-align: center; font-size: 1.15em; color: var(--color-subtitulo-naranja); margin-top: 3px; margin-bottom: 30px;">Tu Nueva Experiencia comienza en Cinepolis</p> 
             <p style="text-align: center; color: var(--color-texto-claro); margin-bottom: 20px;">Completa el siguiente formulario con tus datos.</p>
             
-            <form id="trabajo-form" class="formulario" novalidate>
+            <form id="trabajo-form" class="formulario" 
+                action="https://formspree.io/f/xldpbkvw" 
+                method="POST" 
+                target="_blank">
                 
                 <label for="nombre-trabajo">Nombre Completo:</label>
-                <input type="text" id="nombre-trabajo" name="nombre" required>
+                <input type="text" id="nombre-trabajo" name="nombre-trabajo" required>
                 <div id="error-nombre-trabajo" class="mensaje-error">El nombre es obligatorio.</div>
                 
                 <label for="email-trabajo">Email:</label>
@@ -227,15 +233,15 @@
                 <div id="error-email-trabajo" class="mensaje-error">El email debe ser válido.</div>
 
                 <label for="puesto-trabajo">Puesto deseado:</label>
-                <input type="text" id="puesto-trabajo" name="puesto" required>
+                <input type="text" id="puesto-trabajo" name="puesto-deseado" required>
                 <div id="error-puesto-trabajo" class="mensaje-error">Debe especificar un puesto.</div>
 
                 <label for="linkedin-trabajo">URL de Linkedin (o CV):</label>
-                <input type="url" id="linkedin-trabajo" name="linkedin" required>
+                <input type="url" id="linkedin-trabajo" name="linkedin-cv" required>
                 <div id="error-linkedin-trabajo" class="mensaje-error">La URL de Linkedin es obligatoria y debe ser válida.</div>
 
                 <label for="experiencia-trabajo">Indicar experiencia/comentario:</label>
-                <textarea id="experiencia-trabajo" name="mensaje" rows="5" required></textarea>
+                <textarea id="experiencia-trabajo" name="experiencia-comentario" rows="5" required></textarea>
                 <div id="error-experiencia-trabajo" class="mensaje-error">Por favor, detalle su experiencia (mínimo 10 caracteres).</div>
                 
                 <div class="botones-finales"> 
