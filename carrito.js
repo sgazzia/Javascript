@@ -50,8 +50,6 @@ function agregarAlCarrito(idProducto) {
     }
     
     actualizarCarritoUI();
-    // No cerrar el modal de película al agregar desde la tarjeta
-    // modalPelicula.style.display = 'none'; 
 }
 
 window.eliminarDelCarrito = function(idProducto) {
