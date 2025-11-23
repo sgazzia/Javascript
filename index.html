@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="imagenes/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CinePolis - La Mejor Experiencia Cinematográfica</title>
     <link rel="stylesheet" href="styles.css">
@@ -80,7 +81,7 @@
         </section>
 
         <section id="api-dinamica" class="seccion-principal">
-            <h2>✨ Proximos Estrenos (API)</h2> <!-- API DINAMICA de Cine - https://www.omdbapi.com/ -->
+            <h2>✨ Proximos Estrenos (API)</h2> 
             <p style="text-align: center;">Esta sección carga las películas más populares del momento.</p>
             <div id="peliculas-api-container" class="api-contenedor">
                 <p id="api-loading" style="text-align: center; color: var(--color-acento);">Cargando películas dinámicas...</p>
@@ -109,7 +110,7 @@
                 </article>
 
                 <article class="pelicula-card">
-                    <h3>Coca-Cola</h3>
+                    <h3>Gaseosa Coca-Cola (750ml)</h3>
                     <img src="imagenes/Comida/Coca.jpg" alt="Gaseosa Coca-Cola" width="200" height="300">
                     <p><strong>Incluye:</strong> Una gaseosa para refrescar la salida para que sea inolvidable.</p>
                     <p> El complemento burbujeante perfecto para tu película.</p>
@@ -293,7 +294,7 @@
     
     <div id="modal-pelicula" class="modal">
         <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
+            <span class="cerrar-modal">×</span>
             <div class="modal-info">
                 <img id="modal-imagen" src="" alt="Poster de la película">
                 <div class="modal-detalles">
@@ -310,15 +311,17 @@
     
     <div id="modal-carrito" class="modal">
         <div class="modal-contenido">
-            <span class="cerrar-carrito">&times;</span>
+            <span class="cerrar-carrito">×</span>
             <h3 class="titulo-carrito">🛒 Mi Carrito de Compras</h3>
             <div id="lista-carrito" class="lista-carrito">
                 <p class="carrito-vacio-mensaje">Tu carrito está vacío.</p>
             </div>
             <div id="resumen-carrito">
                 <p id="total-carrito">Total: $0 ARS</p>
-                <button id="finalizar-compra" class="boton-compra">Finalizar Compra</button>
-                <button id="vaciar-carrito" class="boton-limpiar">Vaciar Carrito</button>
+                <div class="botones-carrito">
+                    <button id="vaciar-carrito" class="boton-limpiar">Vaciar Carrito</button>
+                    <button id="finalizar-compra" class="boton-compra">Finalizar Compra</button>
+                </div>
             </div>
         </div>
     </div>
@@ -344,5 +347,6 @@
     </footer>
     
     <script src="script.js"></script>
+    <script src="carrito.js"></script>
 </body>
 </html>
