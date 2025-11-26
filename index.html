@@ -180,32 +180,31 @@
             </iframe>
         </section>
 
-        <section id="contacto" class="seccion-principal formulario-seccion">
+          <section id="contacto" class="seccion-principal formulario-seccion">
             <h2>⚛️ Contáctanos y Reserva tus Entradas</h2>
-            <p style="text-align: center;">Envíanos tus consultas o peticiones de reserva. Te responderemos a la brevedad.</p>
 
             <form id="contacto-form" class="formulario" 
                 action="https://formspree.io/f/mgvnkblj" 
                 method="POST" 
-                target="_blank">
-                
+                novalidate>
+
                 <div class="campos-linea">
                     <div class="campo-doble">
                         <label for="nombre-contacto">Nombre Completo:</label>
-                        <input type="text" id="nombre-contacto" name="nombre-completo" required>
+                        <input type="text" id="nombre-contacto" name="nombre-completo">
                         <div id="error-nombre-contacto" class="mensaje-error">El nombre es obligatorio y debe tener al menos 3 caracteres.</div>
                     </div>
                     
                     <div class="campo-doble">
                         <label for="email-contacto">Email:</label>
-                        <input type="email" id="email-contacto" name="email" required>
-                        <div id="error-email-contacto" class="mensaje-error">El email es obligatorio y debe tener un formato válido (ej: usuario@dominio.com).</div>
+                        <input type="email" id="email-contacto" name="email">
+                        <div id="error-email-contacto" class="mensaje-error">El email debe tener un formato válido.</div>
                     </div>
                 </div>
 
                 <label for="mensaje-contacto">Mensaje o Consulta:</label>
-                <textarea id="mensaje-contacto" name="mensaje-consulta" rows="6" required></textarea>
-                <div id="error-mensaje-contacto" class="mensaje-error">El mensaje es obligatorio y debe tener al menos 10 caracteres.</div>
+                <textarea id="mensaje-contacto" name="mensaje-consulta" rows="6"></textarea>
+                <div id="error-mensaje-contacto" class="mensaje-error">El mensaje debe tener al menos 10 caracteres.</div>
 
                 <div class="botones-finales">
                     <button type="reset" class="boton-limpiar">Limpiar</button>
@@ -216,33 +215,31 @@
 
         <section id="trabaja-nosotros" class="seccion-principal formulario-seccion">
             <h2>📧 ¡Unite al equipo! 📧</h2>
-            <p style="text-align: center; font-size: 1.15em; color: var(--color-subtitulo-naranja); margin-top: 3px; margin-bottom: 30px;">Tu Nueva Experiencia comienza en Cinepolis</p> 
-            <p style="text-align: center; color: var(--color-texto-claro); margin-bottom: 20px;">Completa el siguiente formulario con tus datos.</p>
             
             <form id="trabajo-form" class="formulario" 
                 action="https://formspree.io/f/xldpbkvw" 
                 method="POST" 
-                target="_blank">
-                
+                novalidate>
+
                 <label for="nombre-trabajo">Nombre Completo:</label>
-                <input type="text" id="nombre-trabajo" name="nombre-trabajo" required>
+                <input type="text" id="nombre-trabajo" name="nombre-trabajo">
                 <div id="error-nombre-trabajo" class="mensaje-error">El nombre es obligatorio.</div>
                 
                 <label for="email-trabajo">Email:</label>
-                <input type="email" id="email-trabajo" name="email" required>
+                <input type="email" id="email-trabajo" name="email">
                 <div id="error-email-trabajo" class="mensaje-error">El email debe ser válido.</div>
 
                 <label for="puesto-trabajo">Puesto deseado:</label>
-                <input type="text" id="puesto-trabajo" name="puesto-deseado" required>
+                <input type="text" id="puesto-trabajo" name="puesto-deseado">
                 <div id="error-puesto-trabajo" class="mensaje-error">Debe especificar un puesto.</div>
 
-                <label for="linkedin-trabajo">URL de Linkedin (o CV):</label>
-                <input type="url" id="linkedin-trabajo" name="linkedin-cv" required>
-                <div id="error-linkedin-trabajo" class="mensaje-error">La URL de Linkedin es obligatoria y debe ser válida.</div>
+                <label for="linkedin-trabajo">URL de Linkedin:</label>
+                <input type="url" id="linkedin-trabajo" name="linkedin-cv">
+                <div id="error-linkedin-trabajo" class="mensaje-error">La URL debe ser válida.</div>
 
                 <label for="experiencia-trabajo">Indicar experiencia/comentario:</label>
-                <textarea id="experiencia-trabajo" name="experiencia-comentario" rows="5" required></textarea>
-                <div id="error-experiencia-trabajo" class="mensaje-error">Por favor, detalle su experiencia (mínimo 10 caracteres).</div>
+                <textarea id="experiencia-trabajo" name="experiencia-comentario" rows="5"></textarea>
+                <div id="error-experiencia-trabajo" class="mensaje-error">Debe tener mínimo 10 caracteres.</div>
                 
                 <div class="botones-finales"> 
                     <button type="reset" class="boton-limpiar">Limpiar</button>
@@ -354,5 +351,6 @@
     
     <script src="script.js"></script>
     <script src="carrito.js"></script>
+    <script src="validaciones.js"></script>
 </body>
 </html>
